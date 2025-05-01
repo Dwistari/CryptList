@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoryViewCell" customModule="CrypList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="177" height="68"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="177" height="68"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SM-Ew-TfG">
+                        <rect key="frame" x="0.0" y="5" width="177" height="58"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qas-Hj-N4s">
+                                <rect key="frame" x="8" y="8" width="161" height="42"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Qas-Hj-N4s" secondAttribute="bottom" constant="8" id="O7u-9E-SVt"/>
+                            <constraint firstItem="Qas-Hj-N4s" firstAttribute="centerY" secondItem="8SM-Ew-TfG" secondAttribute="centerY" id="SsO-Zd-nl0"/>
+                            <constraint firstAttribute="trailing" secondItem="Qas-Hj-N4s" secondAttribute="trailing" constant="8" id="XSi-HC-H4E"/>
+                            <constraint firstItem="Qas-Hj-N4s" firstAttribute="leading" secondItem="8SM-Ew-TfG" secondAttribute="leading" constant="8" id="bzb-lZ-2pd"/>
+                            <constraint firstItem="Qas-Hj-N4s" firstAttribute="top" secondItem="8SM-Ew-TfG" secondAttribute="top" constant="8" id="fqW-3x-ZuN"/>
+                            <constraint firstItem="Qas-Hj-N4s" firstAttribute="centerX" secondItem="8SM-Ew-TfG" secondAttribute="centerX" id="tKJ-c6-tkH"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="8SM-Ew-TfG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dUP-RZ-tQd"/>
+                <constraint firstAttribute="trailing" secondItem="8SM-Ew-TfG" secondAttribute="trailing" id="jrn-Ye-KYl"/>
+                <constraint firstItem="8SM-Ew-TfG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="k3p-uI-25W"/>
+                <constraint firstAttribute="bottom" secondItem="8SM-Ew-TfG" secondAttribute="bottom" constant="5" id="rrD-fv-Dbr"/>
+            </constraints>
+            <size key="customSize" width="177" height="68"/>
+            <connections>
+                <outlet property="categoryLbl" destination="Qas-Hj-N4s" id="bhJ-J9-VCP"/>
+                <outlet property="containerView" destination="8SM-Ew-TfG" id="Bl3-Ra-tq2"/>
+            </connections>
+            <point key="canvasLocation" x="17.557251908396946" y="46.478873239436624"/>
+        </collectionViewCell>
+    </objects>
+</document>
