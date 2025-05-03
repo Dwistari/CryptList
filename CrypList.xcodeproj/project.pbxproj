@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD1730E52DC3B1B8005D7514 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E42DC3B1B8005D7514 /* CoreDataManager.swift */; };
+		DD1730E82DC3B291005D7514 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E62DC3B291005D7514 /* UserData.xcdatamodeld */; };
+		DD1730EA2DC3BAD9005D7514 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E92DC3BAD9005D7514 /* UserDefault.swift */; };
+		DD491E1D2DC5C4AF00FCA12E /* DayDateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD491E1C2DC5C4AF00FCA12E /* DayDateValueFormatter.swift */; };
+		DDB420032DC4AF1600FF078A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB420022DC4AF1600FF078A /* HistoryView.swift */; };
+		DDB420072DC4AF5600FF078A /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB420062DC4AF5600FF078A /* HistoryView.xib */; };
+		DDB420092DC4B10500FF078A /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB420082DC4B10500FF078A /* HistoryViewModel.swift */; };
+		DDB4200C2DC4B5F200FF078A /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = DDB4200B2DC4B5F200FF078A /* DGCharts */; };
+		DDB4200E2DC51D7400FF078A /* MarketChartRangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4200D2DC51D7400FF078A /* MarketChartRangeResponse.swift */; };
+		DDB420102DC51ED700FF078A /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4200F2DC51ED700FF078A /* ChartViewModel.swift */; };
 		DDC0763D2DC2883D0079C8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0763C2DC2883D0079C8E4 /* AppDelegate.swift */; };
 		DDC0763F2DC2883D0079C8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0763E2DC2883D0079C8E4 /* SceneDelegate.swift */; };
 		DDC076462DC2883F0079C8E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC076452DC2883F0079C8E4 /* Assets.xcassets */; };
@@ -38,6 +48,9 @@
 		DDC076A62DC38F780079C8E4 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC076A52DC38F780079C8E4 /* LoadingCell.xib */; };
 		DDC076A72DC38F780079C8E4 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC076A42DC38F780079C8E4 /* LoadingCell.swift */; };
 		DDC076AA2DC3A53C0079C8E4 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DDC076A92DC3A53C0079C8E4 /* SDWebImage */; };
+		DDF0AE2B2DC4947500287BC9 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF0AE2A2DC4947500287BC9 /* ChartView.swift */; };
+		DDF0AE2F2DC49E7500287BC9 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF0AE2E2DC49E7500287BC9 /* HistoryCell.xib */; };
+		DDF0AE302DC49E7600287BC9 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF0AE2D2DC49E7500287BC9 /* HistoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +71,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD1730E42DC3B1B8005D7514 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		DD1730E72DC3B291005D7514 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
+		DD1730E92DC3BAD9005D7514 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		DD491E1C2DC5C4AF00FCA12E /* DayDateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDateValueFormatter.swift; sourceTree = "<group>"; };
+		DDB420022DC4AF1600FF078A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		DDB420062DC4AF5600FF078A /* HistoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
+		DDB420082DC4B10500FF078A /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		DDB4200D2DC51D7400FF078A /* MarketChartRangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChartRangeResponse.swift; sourceTree = "<group>"; };
+		DDB4200F2DC51ED700FF078A /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		DDC076392DC2883D0079C8E4 /* CrypList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrypList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC0763C2DC2883D0079C8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDC0763E2DC2883D0079C8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +113,9 @@
 		DDC076A12DC374490079C8E4 /* CategoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryViewCell.xib; sourceTree = "<group>"; };
 		DDC076A42DC38F780079C8E4 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		DDC076A52DC38F780079C8E4 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		DDF0AE2A2DC4947500287BC9 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		DDF0AE2D2DC49E7500287BC9 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		DDF0AE2E2DC49E7500287BC9 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC076AA2DC3A53C0079C8E4 /* SDWebImage in Frameworks */,
+				DDB4200C2DC4B5F200FF078A /* DGCharts in Frameworks */,
 				DDC076972DC345AC0079C8E4 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +146,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD1730E32DC3B1A4005D7514 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				DD1730E42DC3B1B8005D7514 /* CoreDataManager.swift */,
+				DD1730E62DC3B291005D7514 /* UserData.xcdatamodeld */,
+				DD1730E92DC3BAD9005D7514 /* UserDefault.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		DD491E1B2DC5C49E00FCA12E /* Utills */ = {
+			isa = PBXGroup;
+			children = (
+				DD491E1C2DC5C4AF00FCA12E /* DayDateValueFormatter.swift */,
+			);
+			path = Utills;
+			sourceTree = "<group>";
+		};
 		DDC076302DC2883D0079C8E4 = {
 			isa = PBXGroup;
 			children = (
@@ -144,9 +188,10 @@
 		DDC0763B2DC2883D0079C8E4 /* CrypList */ = {
 			isa = PBXGroup;
 			children = (
+				DD491E1B2DC5C49E00FCA12E /* Utills */,
 				DDC0763C2DC2883D0079C8E4 /* AppDelegate.swift */,
 				DDC0763E2DC2883D0079C8E4 /* SceneDelegate.swift */,
-				DDC076882DC292D10079C8E4 /* Utils */,
+				DD1730E32DC3B1A4005D7514 /* Persistence */,
 				DDC076832DC292B10079C8E4 /* Models */,
 				DDC076702DC289490079C8E4 /* Controllers */,
 				DDC0766F2DC289430079C8E4 /* Network */,
@@ -179,12 +224,14 @@
 		DDC0766D2DC289380079C8E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DDF0AE2C2DC49E4C00287BC9 /* History */,
 				DDC0768F2DC327730079C8E4 /* CoinViewCell.swift */,
 				DDC076902DC327730079C8E4 /* CoinViewCell.xib */,
 				DDC076A02DC374490079C8E4 /* CategoryViewCell.swift */,
 				DDC076A12DC374490079C8E4 /* CategoryViewCell.xib */,
 				DDC076A42DC38F780079C8E4 /* LoadingCell.swift */,
 				DDC076A52DC38F780079C8E4 /* LoadingCell.xib */,
+				DDF0AE2A2DC4947500287BC9 /* ChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				DDC076932DC33A1C0079C8E4 /* HomeViewModel.swift */,
+				DDB420082DC4B10500FF078A /* HistoryViewModel.swift */,
+				DDB4200F2DC51ED700FF078A /* ChartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -210,14 +259,11 @@
 		DDC076702DC289490079C8E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DDC076712DC28E980079C8E4 /* LoginViewController.swift */,
-				DDC076722DC28E980079C8E4 /* LoginViewController.xib */,
-				DDC076752DC28EA60079C8E4 /* RegisterViewController.swift */,
-				DDC076762DC28EA60079C8E4 /* RegisterViewController.xib */,
-				DDC076792DC291210079C8E4 /* HomeViewController.swift */,
-				DDC0767A2DC291210079C8E4 /* HomeViewController.xib */,
-				DDC0767D2DC291D80079C8E4 /* DetailCoinViewController.swift */,
-				DDC0767E2DC291D80079C8E4 /* DetailCoinViewController.xib */,
+				DDF0AE212DC4809200287BC9 /* History */,
+				DDF0AE202DC4808C00287BC9 /* Detail */,
+				DDF0AE1F2DC4808600287BC9 /* Home */,
+				DDF0AE1E2DC4807500287BC9 /* Register */,
+				DDF0AE1D2DC4806A00287BC9 /* Login */,
 				DDC0769A2DC366D40079C8E4 /* BaseViewController.swift */,
 			);
 			path = Controllers;
@@ -229,15 +275,9 @@
 				DDC076842DC292B90079C8E4 /* Coin.swift */,
 				DDC0768B2DC324C30079C8E4 /* CoinCategory.swift */,
 				DDC076862DC292C80079C8E4 /* CoinHistory.swift */,
+				DDB4200D2DC51D7400FF078A /* MarketChartRangeResponse.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		DDC076882DC292D10079C8E4 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		DDC076952DC345AC0079C8E4 /* Frameworks */ = {
@@ -245,6 +285,60 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDF0AE1D2DC4806A00287BC9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DDC076712DC28E980079C8E4 /* LoginViewController.swift */,
+				DDC076722DC28E980079C8E4 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DDF0AE1E2DC4807500287BC9 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				DDC076752DC28EA60079C8E4 /* RegisterViewController.swift */,
+				DDC076762DC28EA60079C8E4 /* RegisterViewController.xib */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		DDF0AE1F2DC4808600287BC9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DDC076792DC291210079C8E4 /* HomeViewController.swift */,
+				DDC0767A2DC291210079C8E4 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DDF0AE202DC4808C00287BC9 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DDC0767D2DC291D80079C8E4 /* DetailCoinViewController.swift */,
+				DDC0767E2DC291D80079C8E4 /* DetailCoinViewController.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		DDF0AE212DC4809200287BC9 /* History */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		DDF0AE2C2DC49E4C00287BC9 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				DDF0AE2D2DC49E7500287BC9 /* HistoryCell.swift */,
+				DDF0AE2E2DC49E7500287BC9 /* HistoryCell.xib */,
+				DDB420022DC4AF1600FF078A /* HistoryView.swift */,
+				DDB420062DC4AF5600FF078A /* HistoryView.xib */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +360,7 @@
 			packageProductDependencies = (
 				DDC076962DC345AC0079C8E4 /* Alamofire */,
 				DDC076A92DC3A53C0079C8E4 /* SDWebImage */,
+				DDB4200B2DC4B5F200FF078A /* DGCharts */,
 			);
 			productName = CrypList;
 			productReference = DDC076392DC2883D0079C8E4 /* CrypList.app */;
@@ -342,6 +437,7 @@
 			packageReferences = (
 				DDC0766C2DC289260079C8E4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				DDC076A82DC3A5290079C8E4 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				DDB4200A2DC4B55400FF078A /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = DDC0763A2DC2883D0079C8E4 /* Products */;
 			projectDirPath = "";
@@ -367,6 +463,8 @@
 				DDC076A62DC38F780079C8E4 /* LoadingCell.xib in Resources */,
 				DDC0767F2DC291D80079C8E4 /* DetailCoinViewController.xib in Resources */,
 				DDC076A22DC374490079C8E4 /* CategoryViewCell.xib in Resources */,
+				DDB420072DC4AF5600FF078A /* HistoryView.xib in Resources */,
+				DDF0AE2F2DC49E7500287BC9 /* HistoryCell.xib in Resources */,
 				DDC0767B2DC291210079C8E4 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,17 +496,27 @@
 				DDC0768C2DC324C30079C8E4 /* CoinCategory.swift in Sources */,
 				DDC076782DC28EA60079C8E4 /* RegisterViewController.swift in Sources */,
 				DDC0769B2DC366D40079C8E4 /* BaseViewController.swift in Sources */,
+				DDB420032DC4AF1600FF078A /* HistoryView.swift in Sources */,
+				DDB420092DC4B10500FF078A /* HistoryViewModel.swift in Sources */,
+				DD1730E82DC3B291005D7514 /* UserData.xcdatamodeld in Sources */,
+				DDF0AE2B2DC4947500287BC9 /* ChartView.swift in Sources */,
+				DD1730E52DC3B1B8005D7514 /* CoreDataManager.swift in Sources */,
 				DDC076872DC292C80079C8E4 /* CoinHistory.swift in Sources */,
 				DDC0763D2DC2883D0079C8E4 /* AppDelegate.swift in Sources */,
 				DDC0768A2DC317440079C8E4 /* APIEndpoints.swift in Sources */,
 				DDC076942DC33A1C0079C8E4 /* HomeViewModel.swift in Sources */,
+				DDB4200E2DC51D7400FF078A /* MarketChartRangeResponse.swift in Sources */,
+				DD1730EA2DC3BAD9005D7514 /* UserDefault.swift in Sources */,
+				DDF0AE302DC49E7600287BC9 /* HistoryCell.swift in Sources */,
 				DDC076A32DC374490079C8E4 /* CategoryViewCell.swift in Sources */,
 				DDC076A72DC38F780079C8E4 /* LoadingCell.swift in Sources */,
 				DDC076802DC291D80079C8E4 /* DetailCoinViewController.swift in Sources */,
 				DDC076992DC3462F0079C8E4 /* NetworkManager.swift in Sources */,
 				DDC0763F2DC2883D0079C8E4 /* SceneDelegate.swift in Sources */,
+				DD491E1D2DC5C4AF00FCA12E /* DayDateValueFormatter.swift in Sources */,
 				DDC076822DC292A50079C8E4 /* APIService.swift in Sources */,
 				DDC0767C2DC291210079C8E4 /* HomeViewController.swift in Sources */,
+				DDB420102DC51ED700FF078A /* ChartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +859,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DDB4200A2DC4B55400FF078A /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		DDC0766C2DC289260079C8E4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -770,6 +886,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DDB4200B2DC4B5F200FF078A /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDB4200A2DC4B55400FF078A /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
 		DDC076962DC345AC0079C8E4 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DDC0766C2DC289260079C8E4 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -781,6 +902,20 @@
 			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		DD1730E62DC3B291005D7514 /* UserData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DD1730E72DC3B291005D7514 /* UserData.xcdatamodel */,
+			);
+			currentVersion = DD1730E72DC3B291005D7514 /* UserData.xcdatamodel */;
+			name = UserData.xcdatamodeld;
+			path = /Users/dwistari/Documents/Development/iOS/CrypList/CrypList/Persistence/UserData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DDC076312DC2883D0079C8E4 /* Project object */;
 }

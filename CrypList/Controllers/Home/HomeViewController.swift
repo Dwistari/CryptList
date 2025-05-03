@@ -23,6 +23,7 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Home"
         setTableView()
         setCollectionView()
         segmentControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
@@ -38,7 +39,6 @@ class HomeViewController: BaseViewController {
     }
     
     func setCollectionView() {
-        
         filterCollectionView.delegate = self
         filterCollectionView.dataSource = self
         let nib = UINib(nibName: "CategoryViewCell", bundle: nil)
@@ -54,7 +54,20 @@ class HomeViewController: BaseViewController {
     
     func loadData() {
         self.showLoading()
-        viewModel.fetchCategoryList {
+        viewModel.fetchCategoryList { [weak self] in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.hideLoading()
+                let msg = self.viewModel.errorMsg
+                if !msg.isEmpty {
+                    self.showToastError(message: msg)
+                }
+                self.filterCollectionView.reloadData()
+            }
+        }
+        
+        viewModel.fetchCoinList { [weak self] in
+            guard let self = self else {return}
             DispatchQueue.main.async {
                 self.hideLoading()
                 let msg = self.viewModel.errorMsg
@@ -62,17 +75,6 @@ class HomeViewController: BaseViewController {
                     self.showToastError(message: msg)
                 }
                 self.allCoins = self.viewModel.allCoins
-                self.filterCollectionView.reloadData()
-            }
-        }
-        
-        viewModel.fetchCoinList  {
-            DispatchQueue.main.async {
-                self.hideLoading()
-                let msg = self.viewModel.errorMsg
-                if !msg.isEmpty {
-                    self.showToastError(message: msg)
-                }
                 self.listTableView.reloadData()
             }
         }
@@ -82,7 +84,8 @@ class HomeViewController: BaseViewController {
         self.showLoading()
         viewModel.filter = type
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.viewModel.fetchCoinList {
+            self.viewModel.fetchCoinList { [weak self] in
+                guard let self = self else {return}
                 DispatchQueue.main.async {
                     self.hideLoading()
                     let msg = self.viewModel.errorMsg
@@ -99,9 +102,9 @@ class HomeViewController: BaseViewController {
         if sender.selectedSegmentIndex == 0 {
             allCoins = viewModel.allCoins
         } else {
-            allCoins = viewModel.favoriteCoins
+            allCoins = CoreDataManager.shared.fetchFavorites()
         }
-        self.listTableView.reloadData()
+        listTableView.reloadData()
     }
     
     private func createTableFooterSpinner() -> UIView {
@@ -130,6 +133,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailCoinViewController()
+        vc.coin = allCoins[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

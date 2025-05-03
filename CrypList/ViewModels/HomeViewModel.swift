@@ -15,15 +15,6 @@ class HomeViewModel {
     var errorMsg: String = ""
 
     var allCoins: [Coin] = []
-    var showingFavorites: Bool = false
-
-    var favoriteCoins: [Coin] {
-        return []
-    }
-    
-    var coins: [Coin] {
-        return showingFavorites ? favoriteCoins : allCoins
-    }
     var page: Int = 1
     var limit: Int = 20
     var filter: String = ""

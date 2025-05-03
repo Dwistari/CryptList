@@ -13,6 +13,7 @@ protocol CoinServiceProtocol {
     func fetchCategory(completion: @escaping (Result<[CoinCategory], AFError>) -> Void)
     func fetchCoinHistory(page: Int, completion: @escaping  (Result<[CoinCategory], AFError>) -> Void)
     func getCoinChart(completion: @escaping ([Coin]) -> Void)
+    func getHistoryChart(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void)
 }
 
 
@@ -54,5 +55,23 @@ class APIService: CoinServiceProtocol {
         
     }
     
+    func getHistoryChart(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void) {
+        let params: [String: Any] = [
+               "vs_currency": "usd",
+               "from": from,
+               "to": to
+           ]
+        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChartRange(id: id), parameters: params) { (result: Result<MarketChartRangeResponse, AFError>) in
+            print("✅ Final URL: \(APIEndpoints.Coins.marketChartRange(id: id))")
+            print("✅ Params: \(params)")
+            
+            print("from", from)
+            print("to", to)
+            
+            print("✅ result: \(result)")
+
+            completion(result)
+        }
+    }
     
 }

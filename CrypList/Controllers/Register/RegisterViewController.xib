@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="CrypList" customModuleProvider="target">
             <connections>
+                <outlet property="emailTF" destination="zPh-bL-Xpo" id="c0A-en-LJp"/>
+                <outlet property="nameTF" destination="D9i-rg-Pss" id="ueE-Er-KE2"/>
+                <outlet property="passwordTF" destination="hzz-Te-Pwm" id="vaZ-Cx-L8r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,6 +35,9 @@
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                    <connections>
+                        <action selector="loginBtn:" destination="-1" eventType="touchUpInside" id="HLH-gl-WAC"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-SD-9v5">
                     <rect key="frame" x="16" y="91" width="361" height="37"/>
@@ -56,6 +62,9 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                    <connections>
+                        <action selector="signUpBtn:" destination="-1" eventType="touchUpInside" id="Uu8-gS-y1e"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hzz-Te-Pwm">
                     <rect key="frame" x="16" y="276" width="361" height="50"/>
