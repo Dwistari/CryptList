@@ -7,5 +7,26 @@
 
 import Foundation
 
-
-
+class HistoryViewModel {
+    
+    var service: CoinServiceProtocol
+    var history: CoinHistory?
+    var errorMsg: String = ""
+    
+    init(service: CoinServiceProtocol) {
+        self.service = service
+    }
+    
+    func fetchHistorycalData(id: String, date: String, completion: @escaping () -> Void) {
+        service.fetchCoinHistory(id: id, date: date) { result in
+            switch result {
+            case .success(let response):
+                self.history = response
+                completion()
+            case .failure(let error):
+                self.errorMsg = error.localizedDescription
+                completion()
+            }
+        }
+    }
+}

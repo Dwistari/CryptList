@@ -24,6 +24,8 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
         setTableView()
         setCollectionView()
         segmentControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)

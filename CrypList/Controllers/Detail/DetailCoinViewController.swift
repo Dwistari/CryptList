@@ -43,20 +43,20 @@ class DetailCoinViewController: UIViewController {
     
     func showHistoryView() {
         containerView.subviews.forEach { $0.removeFromSuperview() }
-        
-        let historyView = HistoryView.instantiateFromNib()
-        historyView.frame = containerView.bounds
-        historyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        containerView.addSubview(historyView)
+        let view = HistoryView.instantiateFromNib()
+        view.configure(idCoin: id)
+        view.frame = containerView.bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        containerView.addSubview(view)
     }
     
     func showChartView() {
         containerView.subviews.forEach { $0.removeFromSuperview() }
-        let chartView = ChartView(idCoin: id)
-        chartView.idCoin = id
-        chartView.frame = containerView.bounds
-        chartView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        containerView.addSubview(chartView)
+        let view = ChartView(idCoin: id)
+        view.idCoin = id
+        view.frame = containerView.bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        containerView.addSubview(view)
     }
     
 }

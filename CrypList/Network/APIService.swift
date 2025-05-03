@@ -11,7 +11,7 @@ import Alamofire
 protocol CoinServiceProtocol {
     func fetchCoinList(page: Int, limit: Int, category: String, completion: @escaping (Result<[Coin], AFError>) -> Void)
     func fetchCategory(completion: @escaping (Result<[CoinCategory], AFError>) -> Void)
-    func fetchCoinHistory(page: Int, completion: @escaping  (Result<[CoinCategory], AFError>) -> Void)
+    func fetchCoinHistory(id: String, date: String, completion: @escaping  (Result<CoinHistory, AFError>) -> Void)
     func getMarketChart(id: String, days: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void)
     func getChartRange(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void)
 }
@@ -42,9 +42,15 @@ class APIService: CoinServiceProtocol {
         }
     }
     
-    func fetchCoinHistory(page: Int, completion: @escaping  (Result<[CoinCategory], AFError>) -> Void) {
-        NetworkManager.shared.request(url: APIEndpoints.Coins.history(id: "", date: "")) { (result: Result<[CoinCategory], AFError>) in
+    func fetchCoinHistory(id: String, date: String, completion: @escaping  (Result<CoinHistory, AFError>) -> Void) {
+        let params: [String: Any] = [
+               "date": date
+           ]
+        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChart(id: id), parameters: params) { (result: Result<CoinHistory, AFError>) in
             completion(result)
+            
+            print("url----", APIEndpoints.Coins.marketChart(id: id))
+            print("fetchCoinHistory", result)
         }
     }
     

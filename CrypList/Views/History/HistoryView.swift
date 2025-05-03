@@ -9,41 +9,75 @@ import UIKit
 
 class HistoryView: UIView {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var markerLbl: UILabel!
+    @IBOutlet weak var volumeLbl: UILabel!
+    @IBOutlet weak var changeLbl: UILabel!
     
-    var data: [String] = ["A","B","C","D"]
+    var idCoin: String = ""
     
     static func instantiateFromNib() -> HistoryView {
         let nib = UINib(nibName: "HistoryView", bundle: nil)
         return nib.instantiate(withOwner: nil, options: nil).first as! HistoryView
     }
     
+    
+    var viewModel: HistoryViewModel = {
+        let viewModel = HistoryViewModel(service: APIService())
+        return viewModel
+    }()
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupTableView()
-    }
-        
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        let nib = UINib(nibName: "HistoryCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "HistoryCell")
+        setupView()
     }
     
-}
-
-extension HistoryView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+    func configure(idCoin: String) {
+        self.idCoin = idCoin
+        fetchHistory(date: getDate(date: datePicker.date))
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as? HistoryCell else {
-            return UITableViewCell()
+    private func setupView() {
+        datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        let selectedDate = sender.date
+        fetchHistory(date: getDate(date: selectedDate))
+        self.removeFromSuperview()
+    }
+    
+    func fetchHistory(date: String) {
+        viewModel.fetchHistorycalData(id: idCoin, date: date) { [weak self] in
+            guard let data = self?.viewModel.history else {return}
+            self?.bindView(data: data)
         }
-        cell.setData(price: data[indexPath.row])
-        return cell
     }
+    
+    private func getDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyy"
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
+    
+    private func bindView(data: CoinHistory) {
+        if let price = data.marketData.currentPrice["usd"] {
+            priceLbl.text = String(format: "%.2f", price)
+        }
+        
+        if let marketCap = data.marketData.marketCap["usd"] {
+            markerLbl.text = String(format: "%.2f", marketCap)
+        }
+        
+        if let volume = data.marketData.totalVolume["usd"] {
+            volumeLbl.text = String(format: "%.2f", volume)
+        }
+        
+//        changeLbl.text = String(describing: data.marketData.c)
+    }
+    
 }
-
 

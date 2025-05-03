@@ -10,6 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    var sessionTimer: Timer?
     private var loadingIndicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
@@ -62,6 +63,16 @@ class BaseViewController: UIViewController {
                 toastLabel.removeFromSuperview()
             }
         }
+    }
+    
+    func startSessionTimer(with interval: TimeInterval = 600) {
+        sessionTimer?.invalidate()
+        sessionTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(sessionExpired), userInfo: nil, repeats: false)
+        RunLoop.main.add(sessionTimer!, forMode: .common)
+    }
+    
+    @objc func sessionExpired() {
+        SessionManager.shared.logout()
     }
     
 }

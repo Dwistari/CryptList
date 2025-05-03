@@ -17,8 +17,8 @@ struct APIEndpoints {
         static func details(id: String) -> String {
             return "\(baseURL)/\(id)"
         }
-        static func history(id: String, date: String) -> String {
-            return "\(baseURL)/\(id)/history?date=\(date)"
+        static func history(id: String) -> String {
+            return "\(baseURL)/\(id)/history"
         }
         static func marketChart(id: String) -> String {
             return "\(baseURL)/\(id)/market_chart"
