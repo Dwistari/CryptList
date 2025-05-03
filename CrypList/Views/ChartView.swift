@@ -110,14 +110,13 @@ class ChartView: UIView {
     }
     
     func fetchChart(days: Int) {
-        viewModel.fetchMarketChart(id: idCoin, daysBack: days) { [weak self] in
+        viewModel.fetchMarketChart(id: idCoin, days:  days) { [weak self] in
             guard let chart = self?.viewModel.chart else {return}
             let chartData: [[Double]] = chart.prices
             let dataPoints: [(timestamp: Double, price: Double)] = chartData.compactMap {
                 guard $0.count == 2 else { return nil }
                 return (timestamp: $0[0], price: $0[1])
             }
-
             self?.configure(with: dataPoints)
         }
     }

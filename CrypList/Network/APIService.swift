@@ -12,8 +12,8 @@ protocol CoinServiceProtocol {
     func fetchCoinList(page: Int, limit: Int, category: String, completion: @escaping (Result<[Coin], AFError>) -> Void)
     func fetchCategory(completion: @escaping (Result<[CoinCategory], AFError>) -> Void)
     func fetchCoinHistory(page: Int, completion: @escaping  (Result<[CoinCategory], AFError>) -> Void)
-    func getCoinChart(completion: @escaping ([Coin]) -> Void)
-    func getHistoryChart(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void)
+    func getMarketChart(id: String, days: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void)
+    func getChartRange(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void)
 }
 
 
@@ -38,8 +38,6 @@ class APIService: CoinServiceProtocol {
     
     func fetchCategory(completion: @escaping (Result<[CoinCategory], AFError>) -> Void) {
         NetworkManager.shared.request(url: APIEndpoints.Coins.category) { (result: Result<[CoinCategory], AFError>) in
-            print("url---",  APIEndpoints.Coins.category)
-            print("result", result)
             completion(result)
         }
     }
@@ -50,26 +48,23 @@ class APIService: CoinServiceProtocol {
         }
     }
     
-    
-    func getCoinChart(completion: @escaping ([Coin]) -> Void) {
-        
+    func getMarketChart(id: String, days: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void) {
+        let params: [String: Any] = [
+               "vs_currency": "usd",
+               "days": String(days),
+           ]
+        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChart(id: id), parameters: params) { (result: Result<MarketChartRangeResponse, AFError>) in
+            completion(result)
+        }
     }
     
-    func getHistoryChart(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void) {
+    func getChartRange(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void) {
         let params: [String: Any] = [
                "vs_currency": "usd",
                "from": from,
                "to": to
            ]
         NetworkManager.shared.request(url: APIEndpoints.Coins.marketChartRange(id: id), parameters: params) { (result: Result<MarketChartRangeResponse, AFError>) in
-            print("✅ Final URL: \(APIEndpoints.Coins.marketChartRange(id: id))")
-            print("✅ Params: \(params)")
-            
-            print("from", from)
-            print("to", to)
-            
-            print("✅ result: \(result)")
-
             completion(result)
         }
     }

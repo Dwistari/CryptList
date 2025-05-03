@@ -17,11 +17,8 @@ class ChartViewModel {
         self.service = service
     }
     
-    func fetchMarketChart(id: String, daysBack: Int, completion: @escaping () -> Void) {
-        let toTimestamp = Int(Date().timeIntervalSince1970)
-        let fromTimestamp = toTimestamp - (daysBack * 86400)
-        
-        service.getHistoryChart(id: id, from: fromTimestamp, to: toTimestamp) { result in
+    func fetchMarketChart(id: String, days: Int, completion: @escaping () -> Void) {
+        service.getMarketChart(id: id, days: days) { result in
             switch result {
             case .success(let chart):
                 self.chart = chart

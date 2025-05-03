@@ -22,9 +22,6 @@ class DetailCoinViewController: UIViewController {
         super.viewDidLoad()
      
         guard let data = coin else {return}
-        
-        print("viewDidLoad", data)
-        
         coinName.text = data.name
         priceLbl.text = String(data.currentPrice) + " USD"
         id = data.id

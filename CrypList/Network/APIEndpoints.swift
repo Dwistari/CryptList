@@ -20,8 +20,8 @@ struct APIEndpoints {
         static func history(id: String, date: String) -> String {
             return "\(baseURL)/\(id)/history?date=\(date)"
         }
-        static func marketChart(id: String, days: String) -> String {
-            return "\(baseURL)/\(id)/market_chart?vs_currency=usd&days=\(days)"
+        static func marketChart(id: String) -> String {
+            return "\(baseURL)/\(id)/market_chart"
         }
         static func marketChartRange(id: String) -> String {
             return "\(baseURL)/\(id)/market_chart/range"

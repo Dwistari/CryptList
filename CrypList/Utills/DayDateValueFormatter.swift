@@ -11,13 +11,13 @@ import DGCharts
 class DateValueFormatter: AxisValueFormatter {
     private let dateFormatter: DateFormatter
 
-    init(dateFormat: String = "dd/MM/yy") {
+    init(dateFormat: String =  "dd/MM/yyyy") {
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
     }
 
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let date = Date(timeIntervalSince1970: value)
-        return dateFormatter.string(from: date)
-    }
+           let date = Date(timeIntervalSince1970: value / 1000)
+           return dateFormatter.string(from: date)
+       }
 }
