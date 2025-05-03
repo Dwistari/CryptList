@@ -14,6 +14,7 @@
                 <outlet property="emailTF" destination="zPh-bL-Xpo" id="c0A-en-LJp"/>
                 <outlet property="nameTF" destination="D9i-rg-Pss" id="ueE-Er-KE2"/>
                 <outlet property="passwordTF" destination="hzz-Te-Pwm" id="vaZ-Cx-L8r"/>
+                <outlet property="registerBtn" destination="Bro-ql-4Wa" id="8Pc-Nq-eBB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -55,7 +56,7 @@
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bro-ql-4Wa">
                     <rect key="frame" x="16" y="358" width="361" height="45"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Enj-GE-nWS"/>
                     </constraints>

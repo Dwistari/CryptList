@@ -12,10 +12,17 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var registerBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerBtn.isEnabled = false
+        registerBtn.setTitleColor(.white, for: .normal)
         passwordTF.isSecureTextEntry = true
+
+        nameTF.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
+        emailTF.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
+        passwordTF.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
     }
     
     @IBAction func signUpBtn(_ sender: Any) {
@@ -31,18 +38,16 @@ class RegisterViewController: UIViewController {
     
     private func registerUser() {
         guard let name = nameTF.text, let email = emailTF.text,
-              let password = passwordTF.text,
-              !name.isEmpty, !email.isEmpty,
-              !password.isEmpty else {
-            showAlert(message: "Please enter both username and password.")
-            return
-        }
+              let password = passwordTF.text else {  return  }
         
         let success = CoreDataManager.shared.registerUser(name: name, email: email, password: password)
         if success {
-            showAlert(message: "Registration successful!", title: "Success")
-            let vc = LoginViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            let alert = UIAlertController(title: "Success", message: "Registration successful!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                let vc = LoginViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            present(alert, animated: true)
         } else {
             showAlert(message: "Username already exists.", title: "Failed")
         }
@@ -52,6 +57,19 @@ class RegisterViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    private func isButtonEnable(isEnable: Bool) {
+        registerBtn.isEnabled = isEnable
+        registerBtn.backgroundColor = isEnable ? UIColor.black : UIColor.lightGray
+        registerBtn.setTitleColor(isEnable ? .white : .darkGray, for: .normal)
+    }
+    
+    @objc func textFieldsDidChange() {
+        let isNameEmpty = nameTF.text?.isEmpty ?? true
+        let isEmailEmpty = emailTF.text?.isEmpty ?? true
+        let isPasswordEmpty = passwordTF.text?.isEmpty ?? true
+       isButtonEnable(isEnable: !isEmailEmpty && !isPasswordEmpty)
     }
     
 }
