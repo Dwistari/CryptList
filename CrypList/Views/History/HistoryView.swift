@@ -40,19 +40,24 @@ class HistoryView: UIView {
     }
     
     private func setupView() {
+        datePicker.maximumDate = Date() 
         datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
     }
     
     @objc func datePickerChanged(_ sender: UIDatePicker) {
         let selectedDate = sender.date
         fetchHistory(date: getDate(date: selectedDate))
-        self.removeFromSuperview()
     }
     
     func fetchHistory(date: String) {
         viewModel.fetchHistorycalData(id: idCoin, date: date) { [weak self] in
-            guard let data = self?.viewModel.history else {return}
-            self?.bindView(data: data)
+            guard let self = self else { return }
+            if !self.viewModel.errorMsg.isEmpty {
+                self.showToast(message: self.viewModel.errorMsg)
+                return
+            }
+            guard let data = self.viewModel.history else { return }
+            self.bindView(data: data)
         }
     }
     
@@ -64,19 +69,17 @@ class HistoryView: UIView {
     }
     
     private func bindView(data: CoinHistory) {
-        if let price = data.marketData.currentPrice["usd"] {
+        if let price = data.marketData?.currentPrice["usd"] {
             priceLbl.text = String(format: "%.2f", price)
         }
         
-        if let marketCap = data.marketData.marketCap["usd"] {
+        if let marketCap = data.marketData?.marketCap["usd"] {
             markerLbl.text = String(format: "%.2f", marketCap)
         }
         
-        if let volume = data.marketData.totalVolume["usd"] {
+        if let volume = data.marketData?.totalVolume["usd"] {
             volumeLbl.text = String(format: "%.2f", volume)
         }
-        
-//        changeLbl.text = String(describing: data.marketData.c)
     }
     
 }

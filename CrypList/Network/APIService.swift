@@ -44,21 +44,19 @@ class APIService: CoinServiceProtocol {
     
     func fetchCoinHistory(id: String, date: String, completion: @escaping  (Result<CoinHistory, AFError>) -> Void) {
         let params: [String: Any] = [
-               "date": date
-           ]
-        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChart(id: id), parameters: params) { (result: Result<CoinHistory, AFError>) in
+            "vs_currency": "usd",
+            "date": date
+        ]
+        NetworkManager.shared.request(url: APIEndpoints.Coins.history(id: id), parameters: params) { (result: Result<CoinHistory, AFError>) in
             completion(result)
-            
-            print("url----", APIEndpoints.Coins.marketChart(id: id))
-            print("fetchCoinHistory", result)
         }
     }
     
     func getMarketChart(id: String, days: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void) {
         let params: [String: Any] = [
-               "vs_currency": "usd",
-               "days": String(days),
-           ]
+            "vs_currency": "usd",
+            "days": String(days),
+        ]
         NetworkManager.shared.request(url: APIEndpoints.Coins.marketChart(id: id), parameters: params) { (result: Result<MarketChartRangeResponse, AFError>) in
             completion(result)
         }
@@ -66,10 +64,10 @@ class APIService: CoinServiceProtocol {
     
     func getChartRange(id: String, from: Int, to: Int, completion: @escaping  (Result<MarketChartRangeResponse, AFError>) -> Void) {
         let params: [String: Any] = [
-               "vs_currency": "usd",
-               "from": from,
-               "to": to
-           ]
+            "vs_currency": "usd",
+            "from": from,
+            "to": to
+        ]
         NetworkManager.shared.request(url: APIEndpoints.Coins.marketChartRange(id: id), parameters: params) { (result: Result<MarketChartRangeResponse, AFError>) in
             completion(result)
         }

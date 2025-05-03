@@ -14,7 +14,7 @@ struct CoinHistory: Codable {
     let name: String
     let localization: [String: String]
     let image: Image
-    let marketData: MarketData
+    let marketData: MarketData?
 
     enum CodingKeys: String, CodingKey {
         case id

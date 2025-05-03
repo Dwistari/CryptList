@@ -11,6 +11,7 @@
 		DD1730E82DC3B291005D7514 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E62DC3B291005D7514 /* UserData.xcdatamodeld */; };
 		DD1730EA2DC3BAD9005D7514 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E92DC3BAD9005D7514 /* UserDefault.swift */; };
 		DD491E1D2DC5C4AF00FCA12E /* DayDateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD491E1C2DC5C4AF00FCA12E /* DayDateValueFormatter.swift */; };
+		DD491E202DC655C000FCA12E /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD491E1F2DC655C000FCA12E /* ExtensionView.swift */; };
 		DDB420032DC4AF1600FF078A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB420022DC4AF1600FF078A /* HistoryView.swift */; };
 		DDB420072DC4AF5600FF078A /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB420062DC4AF5600FF078A /* HistoryView.xib */; };
 		DDB420092DC4B10500FF078A /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB420082DC4B10500FF078A /* HistoryViewModel.swift */; };
@@ -75,6 +76,7 @@
 		DD1730E72DC3B291005D7514 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		DD1730E92DC3BAD9005D7514 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		DD491E1C2DC5C4AF00FCA12E /* DayDateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDateValueFormatter.swift; sourceTree = "<group>"; };
+		DD491E1F2DC655C000FCA12E /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
 		DDB420022DC4AF1600FF078A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		DDB420062DC4AF5600FF078A /* HistoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
 		DDB420082DC4B10500FF078A /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
@@ -160,8 +162,18 @@
 			isa = PBXGroup;
 			children = (
 				DD491E1C2DC5C4AF00FCA12E /* DayDateValueFormatter.swift */,
+				DD491E1F2DC655C000FCA12E /* ExtensionView.swift */,
 			);
 			path = Utills;
+			sourceTree = "<group>";
+		};
+		DD491E1E2DC654BE00FCA12E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				DDC076A02DC374490079C8E4 /* CategoryViewCell.swift */,
+				DDC076A12DC374490079C8E4 /* CategoryViewCell.xib */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		DDC076302DC2883D0079C8E4 = {
@@ -224,11 +236,10 @@
 		DDC0766D2DC289380079C8E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DD491E1E2DC654BE00FCA12E /* Category */,
 				DDF0AE2C2DC49E4C00287BC9 /* History */,
 				DDC0768F2DC327730079C8E4 /* CoinViewCell.swift */,
 				DDC076902DC327730079C8E4 /* CoinViewCell.xib */,
-				DDC076A02DC374490079C8E4 /* CategoryViewCell.swift */,
-				DDC076A12DC374490079C8E4 /* CategoryViewCell.xib */,
 				DDC076A42DC38F780079C8E4 /* LoadingCell.swift */,
 				DDC076A52DC38F780079C8E4 /* LoadingCell.xib */,
 				DDF0AE2A2DC4947500287BC9 /* ChartView.swift */,
@@ -259,7 +270,6 @@
 		DDC076702DC289490079C8E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DDF0AE212DC4809200287BC9 /* History */,
 				DDF0AE202DC4808C00287BC9 /* Detail */,
 				DDF0AE1F2DC4808600287BC9 /* Home */,
 				DDF0AE1E2DC4807500287BC9 /* Register */,
@@ -321,13 +331,6 @@
 				DDC0767E2DC291D80079C8E4 /* DetailCoinViewController.xib */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		DDF0AE212DC4809200287BC9 /* History */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = History;
 			sourceTree = "<group>";
 		};
 		DDF0AE2C2DC49E4C00287BC9 /* History */ = {
@@ -508,6 +511,7 @@
 				DDB4200E2DC51D7400FF078A /* MarketChartRangeResponse.swift in Sources */,
 				DD1730EA2DC3BAD9005D7514 /* UserDefault.swift in Sources */,
 				DDF0AE302DC49E7600287BC9 /* HistoryCell.swift in Sources */,
+				DD491E202DC655C000FCA12E /* ExtensionView.swift in Sources */,
 				DDC076A32DC374490079C8E4 /* CategoryViewCell.swift in Sources */,
 				DDC076A72DC38F780079C8E4 /* LoadingCell.swift in Sources */,
 				DDC076802DC291D80079C8E4 /* DetailCoinViewController.swift in Sources */,

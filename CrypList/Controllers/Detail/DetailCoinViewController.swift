@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailCoinViewController: UIViewController {
+class DetailCoinViewController: BaseViewController {
     
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var coinName: UILabel!
