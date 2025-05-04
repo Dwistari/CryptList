@@ -11,7 +11,9 @@ class HomeViewController: BaseViewController {
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var filterCollectionView: UICollectionView!
+    @IBOutlet weak var emptyLbl: UILabel!
     @IBOutlet weak var listTableView: UITableView!
+   
     var filteredCoins: [Coin] = []
     
     var allCoins: [Coin] = []
@@ -75,6 +77,7 @@ class HomeViewController: BaseViewController {
                 let msg = self.viewModel.errorMsg
                 if !msg.isEmpty {
                     self.showToastError(message: msg)
+                    self.emptyLbl.isHidden =  false
                 }
                 self.allCoins = self.viewModel.allCoins
                 self.listTableView.reloadData()
@@ -106,6 +109,8 @@ class HomeViewController: BaseViewController {
         } else {
             allCoins = CoreDataManager.shared.fetchFavorites()
         }
+        
+        emptyLbl.isHidden =  self.allCoins.count > 0
         listTableView.reloadData()
     }
     
@@ -117,6 +122,13 @@ class HomeViewController: BaseViewController {
         footerView.addSubview(spinner)
         return footerView
     }
+    
+    
+    @IBAction func openWebView(_ sender: Any) {
+        let vc = WebViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {

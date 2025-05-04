@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD0317B92DC732DD00CA77AA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0317B62DC732DD00CA77AA /* WebViewController.swift */; };
+		DD0317BB2DC7350D00CA77AA /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0317BA2DC7350D00CA77AA /* ReceiptViewController.swift */; };
+		DD0317BD2DC7351A00CA77AA /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0317BC2DC7351A00CA77AA /* ThankYouViewController.swift */; };
 		DD1730E52DC3B1B8005D7514 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E42DC3B1B8005D7514 /* CoreDataManager.swift */; };
 		DD1730E82DC3B291005D7514 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E62DC3B291005D7514 /* UserData.xcdatamodeld */; };
 		DD1730EA2DC3BAD9005D7514 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1730E92DC3BAD9005D7514 /* UserDefault.swift */; };
@@ -72,6 +75,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD0317B62DC732DD00CA77AA /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		DD0317BA2DC7350D00CA77AA /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
+		DD0317BC2DC7351A00CA77AA /* ThankYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
 		DD1730E42DC3B1B8005D7514 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DD1730E72DC3B291005D7514 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		DD1730E92DC3BAD9005D7514 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -275,6 +281,9 @@
 				DDF0AE1E2DC4807500287BC9 /* Register */,
 				DDF0AE1D2DC4806A00287BC9 /* Login */,
 				DDC0769A2DC366D40079C8E4 /* BaseViewController.swift */,
+				DD0317B62DC732DD00CA77AA /* WebViewController.swift */,
+				DD0317BA2DC7350D00CA77AA /* ReceiptViewController.swift */,
+				DD0317BC2DC7351A00CA77AA /* ThankYouViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -513,12 +522,15 @@
 				DDF0AE302DC49E7600287BC9 /* HistoryCell.swift in Sources */,
 				DD491E202DC655C000FCA12E /* ExtensionView.swift in Sources */,
 				DDC076A32DC374490079C8E4 /* CategoryViewCell.swift in Sources */,
+				DD0317B92DC732DD00CA77AA /* WebViewController.swift in Sources */,
 				DDC076A72DC38F780079C8E4 /* LoadingCell.swift in Sources */,
 				DDC076802DC291D80079C8E4 /* DetailCoinViewController.swift in Sources */,
 				DDC076992DC3462F0079C8E4 /* NetworkManager.swift in Sources */,
 				DDC0763F2DC2883D0079C8E4 /* SceneDelegate.swift in Sources */,
+				DD0317BD2DC7351A00CA77AA /* ThankYouViewController.swift in Sources */,
 				DD491E1D2DC5C4AF00FCA12E /* DayDateValueFormatter.swift in Sources */,
 				DDC076822DC292A50079C8E4 /* APIService.swift in Sources */,
+				DD0317BB2DC7350D00CA77AA /* ReceiptViewController.swift in Sources */,
 				DDC0767C2DC291210079C8E4 /* HomeViewController.swift in Sources */,
 				DDB420102DC51ED700FF078A /* ChartViewModel.swift in Sources */,
 			);

@@ -69,7 +69,7 @@ class RegisterViewController: UIViewController {
         let isNameEmpty = nameTF.text?.isEmpty ?? true
         let isEmailEmpty = emailTF.text?.isEmpty ?? true
         let isPasswordEmpty = passwordTF.text?.isEmpty ?? true
-       isButtonEnable(isEnable: !isEmailEmpty && !isPasswordEmpty)
+       isButtonEnable(isEnable: !isNameEmpty && !isEmailEmpty && !isPasswordEmpty)
     }
     
 }
