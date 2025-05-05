@@ -14,10 +14,6 @@ class SessionManager {
         return UserDefaults.standard.string(forKey: "loggedInUserEmail") != nil
     }
     
-    var loggedInEmail: String? {
-        return UserDefaults.standard.string(forKey: "loggedInUserEmail")
-    }
-    
     func login(email: String) {
         UserDefaults.standard.set(email, forKey: "loggedInUserEmail")
     }
