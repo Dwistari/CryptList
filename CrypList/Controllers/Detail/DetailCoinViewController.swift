@@ -30,6 +30,7 @@ class DetailCoinViewController: BaseViewController {
         super.viewDidLoad()
         segmentControl.selectedSegmentIndex = 0
         segmentChanged(segmentControl)
+        configureUI()
     }
     
     private func configureUI() {
