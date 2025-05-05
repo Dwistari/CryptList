@@ -28,14 +28,6 @@ class DetailCoinViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        guard let data = coin else {return}
-        coinName.text = data.name
-        priceLbl.text = String(data.currentPrice) + " USD"
-        id = data.id
-        let url = URL(string: data.image ?? "")
-        logoImg.sd_setImage(with: url,placeholderImage: UIImage(systemName: "photo"), options: [.retryFailed, .continueInBackground])
-        
         segmentControl.selectedSegmentIndex = 0
         segmentChanged(segmentControl)
     }
