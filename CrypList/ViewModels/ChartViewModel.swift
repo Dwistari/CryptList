@@ -29,4 +29,17 @@ class ChartViewModel {
             }
         }
     }
+    
+    func fetchChartRange(id: String, from: Int, to: Int, completion: @escaping () -> Void) {
+        service.getChartRange(id: id, from: from, to: to ) { result in
+            switch result {
+            case .success(let chart):
+                self.chart = chart
+                completion()
+            case .failure(let error):
+                self.errorMsg = error.localizedDescription
+                completion()
+            }
+        }
+    }
 }
