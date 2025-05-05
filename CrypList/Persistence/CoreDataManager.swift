@@ -99,9 +99,18 @@ class CoreDataManager {
     }
     
     func saveFavorite(isFavorite: Bool, coin: Coin?) {
-        guard let favCoin = coin else{return}
+        guard let favCoin = coin else { return }
+        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@ AND user.email == %@", favCoin.id, getCurrentUser()?.email ?? "")
+        
         if isFavorite {
             do {
+                // Check if already exists
+                let existing = try context.fetch(fetchRequest)
+                if !existing.isEmpty {
+                    return
+                }
+
                 let favorite = Favorite(context: context)
                 favorite.id = favCoin.id
                 favorite.name = favCoin.name
@@ -109,25 +118,20 @@ class CoreDataManager {
                 favorite.price = favCoin.currentPrice
                 favorite.user = getCurrentUser()
                 try context.save()
-                print("success to save favorite.")
+                print("Success to save favorite.")
             } catch {
                 print("Failed to save favorite:", error)
             }
+
         } else {
-            if let user = getCurrentUser(){
-                let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "id == %@ AND user.email == %@", favCoin.id, user.email ?? "")
+            if let user = getCurrentUser() {
                 do {
                     let results = try context.fetch(fetchRequest)
                     for object in results {
                         context.delete(object)
                     }
-                    do {
-                        try context.save()
-                        print("Favorite removed successfully.")
-                    } catch {
-                        print("Failed to save context after removal:", error)
-                    }
+                    try context.save()
+                    print("Favorite removed successfully.")
                 } catch {
                     print("Failed to remove favorite:", error)
                 }

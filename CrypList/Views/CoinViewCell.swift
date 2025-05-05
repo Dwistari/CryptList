@@ -19,6 +19,8 @@ class CoinViewCell: UITableViewCell {
     private var selectedCoin: Coin?
     private var isFavorited = false
     
+    var onTapFavorite: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 8
@@ -35,10 +37,7 @@ class CoinViewCell: UITableViewCell {
     }
     
     @IBAction func favoriteBtn(_ sender: Any) {
-        isFavorited.toggle()
-        let imageName = isFavorited ? "heart.fill" : "heart"
-        favoriteBtn.setImage(UIImage(systemName: imageName), for: .normal)
-        CoreDataManager.shared.saveFavorite(isFavorite: isFavorited, coin: selectedCoin)
+        self.onTapFavorite?()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

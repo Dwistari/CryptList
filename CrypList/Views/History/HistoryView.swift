@@ -70,15 +70,15 @@ class HistoryView: UIView {
     
     private func bindView(data: CoinHistory) {
         if let price = data.marketData?.currentPrice["usd"] {
-            priceLbl.text = String(format: "%.2f", price)
+            priceLbl.text = "$ " + String(format: "%.2f", price)
         }
         
         if let marketCap = data.marketData?.marketCap["usd"] {
-            markerLbl.text = String(format: "%.2f", marketCap)
+            markerLbl.text = "$ " +  String(format: "%.2f", marketCap)
         }
         
         if let volume = data.marketData?.totalVolume["usd"] {
-            volumeLbl.text = String(format: "%.2f", volume)
+            volumeLbl.text = "$ " +   String(format: "%.2f", volume)
         }
     }
     

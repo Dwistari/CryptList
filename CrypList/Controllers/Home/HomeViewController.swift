@@ -13,15 +13,21 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var emptyLbl: UILabel!
     @IBOutlet weak var listTableView: UITableView!
-   
-    var filteredCoins: [Coin] = []
     
+    var filteredCoins: [Coin] = []
     var allCoins: [Coin] = []
-   
+    var favoriteCoins: [Coin] = []
+    
+    var isFavoriteShow: Bool = false
+    
     lazy var viewModel: HomeViewModel = {
         let viewModel = HomeViewModel(service: APIService())
         return viewModel
     }()
+    
+    private var displayedCoins: [Coin] {
+          return isFavoriteShow ? favoriteCoins : allCoins
+      }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +89,9 @@ class HomeViewController: BaseViewController {
                 self.listTableView.reloadData()
             }
         }
+       
+        allCoins = viewModel.allCoins
+        favoriteCoins = CoreDataManager.shared.fetchFavorites()
     }
     
     func filterCoins(by type: String) {
@@ -104,13 +113,8 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func segmentChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            allCoins = viewModel.allCoins
-        } else {
-            allCoins = CoreDataManager.shared.fetchFavorites()
-        }
-        
-        emptyLbl.isHidden =  self.allCoins.count > 0
+        isFavoriteShow = sender.selectedSegmentIndex == 1
+        emptyLbl.isHidden = displayedCoins.count > 0
         listTableView.reloadData()
     }
     
@@ -134,14 +138,29 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allCoins.count
+        return  isFavoriteShow ? favoriteCoins.count : allCoins.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CoinViewCell", for: indexPath) as? CoinViewCell else {
             return UITableViewCell()
         }
-        cell.setupCell(coin: allCoins[indexPath.row])
+        
+        let coin =  isFavoriteShow ? favoriteCoins[indexPath.row] : allCoins[indexPath.row]
+        let isFavorited = favoriteCoins.contains { $0.id == coin.id }
+
+        let imageName = isFavorited ? "heart.fill" : "heart"
+        cell.favoriteBtn.setImage(UIImage(systemName: imageName), for: .normal)
+                
+        cell.setupCell(coin: coin)
+        cell.onTapFavorite = {
+            CoreDataManager.shared.saveFavorite(isFavorite: !isFavorited, coin: coin)
+            
+            // Refresh favorites and reload cell
+            self.favoriteCoins = CoreDataManager.shared.fetchFavorites()
+            self.listTableView.reloadData()
+            self.emptyLbl.isHidden = self.displayedCoins.count > 0
+     }
         return cell
     }
     
@@ -150,22 +169,23 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let coin =  isFavoriteShow ? favoriteCoins[indexPath.row] : allCoins[indexPath.row]
         let vc = DetailCoinViewController()
-        vc.coin = allCoins[indexPath.row]
+        vc.coin = coin
         navigationController?.pushViewController(vc, animated: true)
     }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == listTableView else { return }
-
+        
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let frameHeight = scrollView.frame.size.height
-
+        
         if offsetY > contentHeight - frameHeight * 1.5 {
             self.listTableView.tableFooterView = createTableFooterSpinner()
-
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.viewModel.page += 1
                 self.viewModel.fetchCoinList {
