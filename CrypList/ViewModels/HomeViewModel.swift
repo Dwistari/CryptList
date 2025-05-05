@@ -13,7 +13,7 @@ class HomeViewModel {
     var service: CoinServiceProtocol
     var categories: [CoinCategory] = []
     var errorMsg: String = ""
-
+    
     var allCoins: [Coin] = []
     var page: Int = 1
     var limit: Int = 20
@@ -24,7 +24,8 @@ class HomeViewModel {
     }
     
     func fetchCoinList(completion: @escaping () -> Void) {
-        service.fetchCoinList(page: page, limit: limit, category: filter) { result in
+        service.fetchCoinList(page: page, limit: limit, category: filter) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let coins):
                 if self.page > 1 {
@@ -41,7 +42,8 @@ class HomeViewModel {
     }
     
     func fetchCategoryList(completion: @escaping () -> Void) {
-        service.fetchCategory { result in
+        service.fetchCategory { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let category):
                 self.categories = category

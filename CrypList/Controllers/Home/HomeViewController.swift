@@ -97,17 +97,15 @@ class HomeViewController: BaseViewController {
     func filterCoins(by type: String) {
         self.showLoading()
         viewModel.filter = type
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.viewModel.fetchCoinList { [weak self] in
-                guard let self = self else {return}
-                DispatchQueue.main.async {
-                    self.hideLoading()
-                    let msg = self.viewModel.errorMsg
-                    if !msg.isEmpty {
-                        self.showToastError(message: msg)
-                    }
-                    self.listTableView.reloadData()
+        self.viewModel.fetchCoinList { [weak self] in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.hideLoading()
+                let msg = self.viewModel.errorMsg
+                if !msg.isEmpty {
+                    self.showToastError(message: msg)
                 }
+                self.listTableView.reloadData()
             }
         }
     }
@@ -153,7 +151,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.favoriteBtn.setImage(UIImage(systemName: imageName), for: .normal)
                 
         cell.setupCell(coin: coin)
-        cell.onTapFavorite = {
+        cell.onTapFavorite = { [weak self] in
+            guard let self = self else { return }
             CoreDataManager.shared.saveFavorite(isFavorite: !isFavorited, coin: coin)
             
             // Refresh favorites and reload cell
@@ -170,8 +169,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let coin =  isFavoriteShow ? favoriteCoins[indexPath.row] : allCoins[indexPath.row]
-        let vc = DetailCoinViewController()
-        vc.coin = coin
+        let vc = DetailCoinViewController(coin: coin)
         navigationController?.pushViewController(vc, animated: true)
     }
     

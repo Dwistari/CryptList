@@ -15,8 +15,16 @@ class DetailCoinViewController: BaseViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    var coin: Coin?
-    var id: String = ""
+    private var coin: Coin
+
+    init(coin: Coin) {
+        self.coin = coin
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+          fatalError("init(coder:) has not been implemented")
+      }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +39,22 @@ class DetailCoinViewController: BaseViewController {
         segmentControl.selectedSegmentIndex = 0
         segmentChanged(segmentControl)
     }
+    
+    private func configureUI() {
+        coinName.text = coin.name
+        priceLbl.text = formatPrice(coin.currentPrice)        
+        let url = URL(string: coin.image ?? "")
+        logoImg.sd_setImage(with: url,placeholderImage: UIImage(systemName: "photo"), options: [.retryFailed, .continueInBackground])
+    }
+    
+    
+      private func formatPrice(_ value: Double) -> String {
+          let formatter = NumberFormatter()
+          formatter.numberStyle = .currency
+          formatter.currencySymbol = "USD"
+          formatter.maximumFractionDigits = 2
+          return formatter.string(from: NSNumber(value: value)) ?? "\(value) USD"
+      }
         
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -42,21 +66,21 @@ class DetailCoinViewController: BaseViewController {
     }
     
     func showHistoryView() {
-        containerView.subviews.forEach { $0.removeFromSuperview() }
         let view = HistoryView.instantiateFromNib()
-        view.configure(idCoin: id)
-        view.frame = containerView.bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        containerView.addSubview(view)
+        view.configure(idCoin: coin.id)
+        showView(view)
     }
     
-    func showChartView() {
-        containerView.subviews.forEach { $0.removeFromSuperview() }
-        let view = ChartView(idCoin: id)
-        view.idCoin = id
-        view.frame = containerView.bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        containerView.addSubview(view)
+    private func showChartView() {
+        let view = ChartView(idCoin: coin.id)
+        showView(view)
     }
+    
+    private func showView(_ view: UIView) {
+         containerView.subviews.forEach { $0.removeFromSuperview() }
+         view.frame = containerView.bounds
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         containerView.addSubview(view)
+     }
     
 }

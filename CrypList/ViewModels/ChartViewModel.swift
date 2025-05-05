@@ -18,7 +18,8 @@ class ChartViewModel {
     }
     
     func fetchMarketChart(id: String, days: Int, completion: @escaping () -> Void) {
-        service.getMarketChart(id: id, days: days) { result in
+        service.getMarketChart(id: id, days: days){ [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let chart):
                 self.chart = chart
@@ -31,7 +32,8 @@ class ChartViewModel {
     }
     
     func fetchChartRange(id: String, from: Int, to: Int, completion: @escaping () -> Void) {
-        service.getChartRange(id: id, from: from, to: to ) { result in
+        service.getChartRange(id: id, from: from, to: to ) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let chart):
                 self.chart = chart

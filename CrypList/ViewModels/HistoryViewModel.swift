@@ -18,7 +18,8 @@ class HistoryViewModel {
     }
     
     func fetchHistorycalData(id: String, date: String, completion: @escaping () -> Void) {
-        service.fetchCoinHistory(id: id, date: date) { result in
+        service.fetchCoinHistory(id: id, date: date) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 self.history = response

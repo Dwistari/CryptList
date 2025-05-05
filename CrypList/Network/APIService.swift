@@ -28,16 +28,14 @@ class APIService: CoinServiceProtocol {
         if !category.isEmpty {
             params["category"] = category
         }
-        NetworkManager.shared.request(url: APIEndpoints.Coins.list, parameters: params) { (result: Result<[Coin], AFError>) in
-            print("url---",  APIEndpoints.Coins.list)
-            print("result", result)
-            
+        NetworkManager.shared.request(url: APIEndpoints.Coins.list, parameters: params) { result in
             completion(result)
         }
+        
     }
     
     func fetchCategory(completion: @escaping (Result<[CoinCategory], AFError>) -> Void) {
-        NetworkManager.shared.request(url: APIEndpoints.Coins.category) { (result: Result<[CoinCategory], AFError>) in
+        NetworkManager.shared.request(url: APIEndpoints.Coins.category) {  result in
             completion(result)
         }
     }
@@ -47,7 +45,7 @@ class APIService: CoinServiceProtocol {
             "vs_currency": "usd",
             "date": date
         ]
-        NetworkManager.shared.request(url: APIEndpoints.Coins.history(id: id), parameters: params) { (result: Result<CoinHistory, AFError>) in
+        NetworkManager.shared.request(url: APIEndpoints.Coins.history(id: id), parameters: params) { result in
             completion(result)
         }
     }
@@ -57,7 +55,7 @@ class APIService: CoinServiceProtocol {
             "vs_currency": "usd",
             "days": String(days),
         ]
-        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChart(id: id), parameters: params) { (result: Result<MarketChartRangeResponse, AFError>) in
+        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChart(id: id), parameters: params) { result in
             completion(result)
         }
     }
@@ -68,7 +66,7 @@ class APIService: CoinServiceProtocol {
             "from": from,
             "to": to
         ]
-        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChartRange(id: id), parameters: params) { (result: Result<MarketChartRangeResponse, AFError>) in
+        NetworkManager.shared.request(url: APIEndpoints.Coins.marketChartRange(id: id), parameters: params)  { result in
             completion(result)
         }
     }
